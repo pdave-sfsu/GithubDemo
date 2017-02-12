@@ -95,6 +95,12 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         //nameLabel is set to name
         cell.nameLabel.text = repo.name
         
+//        cell.forksLabel.text = "\(repo.forks)"
+//        cell.starsLabel.text = "\(repo.stars)"
+        cell.descriptionLabel.text = repo.description
+        cell.ownerLabel.text = repo.ownerHandle
+        
+        
         return cell
         
     }
