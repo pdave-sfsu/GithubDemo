@@ -107,6 +107,12 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.starsButton.setTitle(starsCount, for: UIControlState.normal)
         
         
+        
+        if let avatarPhoto = repo.ownerAvatarURL{
+            let avatarPhotoURL = URL(string: avatarPhoto)
+            cell.avatarImageView.setImageWith(avatarPhotoURL! as URL)
+        }
+        
         return cell
         
     }
