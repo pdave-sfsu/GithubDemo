@@ -10,19 +10,34 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController {
+class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    //searchBar
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
 
-    var repos: [GithubRepo]!
+    //tableView
+    @IBOutlet weak var tableView: UITableView!
+    
+    //repos Property initialized to empty
+    var repos: [GithubRepo]! = []
 
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Initialize the UISearchBar
         searchBar = UISearchBar()
         searchBar.delegate = self
+        
+        //Set the tableView delegate and dataSource to self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //estimatedRowHeight
+        tableView.estimatedRowHeight = 100
+        //set the tableViewCells to be resizable
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Add SearchBar to the NavigationBar
         searchBar.sizeToFit()
@@ -35,6 +50,7 @@ class RepoResultsViewController: UIViewController {
     // Perform the search.
     fileprivate func doSearch() {
 
+        //Shows progressHUD
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
         // Perform request to GitHub API to get the list of repositories
@@ -43,12 +59,44 @@ class RepoResultsViewController: UIViewController {
             // Print the returned repositories to the output window
             for repo in newRepos {
                 print(repo)
-            }   
+                
+                //add the repo to the global repo property
+                self.repos.append(repo)
+            }
+            
+            //reload the Data in the tableView
+            self.tableView.reloadData()
 
+            //hide the progressHUD
             MBProgressHUD.hide(for: self.view, animated: true)
             }, error: { (error) -> Void in
-                print(error)
+                print(error ?? 0)
         })
+    }
+    
+    //numberOfRowsInSection
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let repos = repos {
+            return repos.count
+        } else {
+            return 0
+        }
+    }
+    
+    //cellForRowAt
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //create the cell, cast as GitHubRepoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GitHubRepoCell", for: indexPath) as! GitHubRepoCell
+        
+        //retrieve the proper repo
+        let repo = repos[indexPath.row]
+        
+        //nameLabel is set to name
+        cell.nameLabel.text = repo.name
+        
+        return cell
+        
     }
 }
 
