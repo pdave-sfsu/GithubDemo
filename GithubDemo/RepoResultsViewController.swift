@@ -97,8 +97,14 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         
 //        cell.forksLabel.text = "\(repo.forks)"
 //        cell.starsLabel.text = "\(repo.stars)"
-        cell.descriptionLabel.text = repo.description
+        cell.descriptionLabel.text = repo.repoDescription
         cell.ownerLabel.text = repo.ownerHandle
+        
+        let forksCount = String(describing: repo.forks!)
+        cell.forksButton.setTitle(forksCount, for: UIControlState.normal)
+        
+        let starsCount = String(describing: repo.stars!)
+        cell.starsButton.setTitle(starsCount, for: UIControlState.normal)
         
         
         return cell

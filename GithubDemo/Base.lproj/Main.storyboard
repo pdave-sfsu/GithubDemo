@@ -21,9 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vy1-4M-sc9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vy1-4M-sc9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GitHubRepoCell" rowHeight="181" id="pu6-yE-xBB" customClass="GitHubRepoCell" customModule="GithubDemo" customModuleProvider="target">
@@ -94,14 +93,22 @@
                                         <connections>
                                             <outlet property="avatarImageView" destination="3kh-2O-8i5" id="pUe-hx-kEl"/>
                                             <outlet property="descriptionLabel" destination="O9Z-PF-F7n" id="6EG-Zt-7Z9"/>
+                                            <outlet property="forksButton" destination="8cv-fE-NlX" id="FUG-Gz-eHO"/>
                                             <outlet property="nameLabel" destination="hyj-5z-Chx" id="yZ5-h2-RFB"/>
                                             <outlet property="ownerLabel" destination="9sD-c8-gFY" id="9DI-N1-HkT"/>
+                                            <outlet property="starsButton" destination="QNO-EI-dh0" id="UIh-2Z-ufo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vy1-4M-sc9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="U99-CB-8Gk"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vy1-4M-sc9" secondAttribute="bottom" id="cRV-kq-Ojg"/>
+                            <constraint firstItem="vy1-4M-sc9" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="veJ-bo-ViB"/>
+                            <constraint firstAttribute="trailing" secondItem="vy1-4M-sc9" secondAttribute="trailing" id="xQi-dn-xtS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
                     <connections>
