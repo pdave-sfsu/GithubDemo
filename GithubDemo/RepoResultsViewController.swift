@@ -12,12 +12,12 @@ import MBProgressHUD
 // Main ViewController
 class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    //tableView
+    @IBOutlet weak var tableView: UITableView!
+    
     //searchBar
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
-
-    //tableView
-    @IBOutlet weak var tableView: UITableView!
     
     //repos Property initialized to empty
     var repos: [GithubRepo]! = []
@@ -25,10 +25,6 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Initialize the UISearchBar
-        searchBar = UISearchBar()
-        searchBar.delegate = self
         
         //Set the tableView delegate and dataSource to self
         tableView.delegate = self
@@ -38,6 +34,10 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.estimatedRowHeight = 100
         //set the tableViewCells to be resizable
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Initialize the UISearchBar
+        searchBar = UISearchBar()
+        searchBar.delegate = self
 
         // Add SearchBar to the NavigationBar
         searchBar.sizeToFit()
@@ -94,27 +94,22 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         
         //nameLabel is set to name
         cell.nameLabel.text = repo.name
-        
-//        cell.forksLabel.text = "\(repo.forks)"
-//        cell.starsLabel.text = "\(repo.stars)"
         cell.descriptionLabel.text = repo.repoDescription
         cell.ownerLabel.text = repo.ownerHandle
         
+        //set the forks and stars count
         let forksCount = String(describing: repo.forks!)
         cell.forksButton.setTitle(forksCount, for: UIControlState.normal)
-        
         let starsCount = String(describing: repo.stars!)
         cell.starsButton.setTitle(starsCount, for: UIControlState.normal)
         
-        
-        
+        //Added photo
         if let avatarPhoto = repo.ownerAvatarURL{
             let avatarPhotoURL = URL(string: avatarPhoto)
             cell.avatarImageView.setImageWith(avatarPhotoURL! as URL)
         }
         
         return cell
-        
     }
 }
 
