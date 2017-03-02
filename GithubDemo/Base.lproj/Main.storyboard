@@ -117,7 +117,18 @@
                             <constraint firstAttribute="trailing" secondItem="vy1-4M-sc9" secondAttribute="trailing" id="xQi-dn-xtS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
+                    <navigationItem key="navigationItem" id="x5q-EH-pP8">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hck-ak-ZPm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tw8-bd-NCZ">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="miv-wL-tND" kind="presentation" id="5Yw-xO-AIT"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vy1-4M-sc9" id="a8r-hw-1cc"/>
                     </connections>
@@ -125,6 +136,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="818.39999999999998" y="-558.17091454272872"/>
+        </scene>
+        <!--Search Settings View Controller-->
+        <scene sceneID="iDP-Iv-rxH">
+            <objects>
+                <viewController id="miv-wL-tND" customClass="SearchSettingsViewController" customModule="GithubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W82-n1-V1k"/>
+                        <viewControllerLayoutGuide type="bottom" id="R1P-dW-rjm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7TZ-Jp-Vvj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3GG-J8-Yzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="-1234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">

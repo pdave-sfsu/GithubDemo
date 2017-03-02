@@ -58,7 +58,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
 
             // Print the returned repositories to the output window
             for repo in newRepos {
-                print(repo)
+//                print(repo)
                 
                 //add the repo to the global repo property
                 self.repos.append(repo)
