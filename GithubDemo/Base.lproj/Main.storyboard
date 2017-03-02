@@ -124,7 +124,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="miv-wL-tND" kind="presentation" id="5Yw-xO-AIT"/>
+                                    <segue destination="FyG-D7-Mig" kind="presentation" id="5Yw-xO-AIT"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -148,12 +148,30 @@
                     <view key="view" contentMode="scaleToFill" id="7TZ-Jp-Vvj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="X86-LM-eJF">
+                                <rect key="frame" x="243" y="176" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aEV-a1-xgR">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="z9G-mO-rmh">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="miv-wL-tND" id="b9s-CP-Tqu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="r5w-lN-mfd">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="miv-wL-tND" id="qvg-UX-mPq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GG-J8-Yzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="-1234"/>
+            <point key="canvasLocation" x="1756" y="-1234.6326836581711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
@@ -172,6 +190,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dru-y2-L7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="-557"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jve-p3-OJQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FyG-D7-Mig" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIS-G1-Ev6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="miv-wL-tND" kind="relationship" relationship="rootViewController" id="UJ3-Rh-rN8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2sD-Y5-tlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="-1234.6326836581711"/>
         </scene>
     </scenes>
     <resources>
