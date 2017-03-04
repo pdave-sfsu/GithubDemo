@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
+//added in the SettingsPresentingViewControllerDelegate
 class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SettingsPresentingViewControllerDelegate {
     
 
@@ -114,23 +115,50 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    //didCancelSettings(): part of the SettingsPresentingViewControllerDelegate
     internal func didCancelSettings() {
-        print("Hello")
+        print("RepoResultsViewController: didCancelSettings()")
     }
     
+    //didSaveSettings(): SettingsPresentingViewControllerDelegate
     internal func didSaveSettings(settings: GithubRepoSearchSettings) {
+        
+        //Making the searchSettings equal to the settings
         self.searchSettings = settings
+        
+        //Making the network call
         doSearch()
     }
     
+    //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //Retrieving the navigation controller
         let navController = segue.destination as! UINavigationController
+        
+        //Retrieving the searchSettingsViewController
         let vc = navController.topViewController as! SearchSettingsViewController
+        
+        //Making the settings equal to the global property of searchSettings
         vc.settings = searchSettings
+        
+        //Settings the delegate property to this viewController
+        //Necessary since the didSaveSettings() are within this viewController
         vc.delegate = self
     }
 }
+
+
+//SettingsPresentingViewContollerDelegate
+protocol SettingsPresentingViewControllerDelegate: class {
+    
+    //did save settings
+    func didSaveSettings(settings: GithubRepoSearchSettings)
+    
+    //didCancelSettings
+    func didCancelSettings()
+}
+
 
 // SearchBar methods
 extension RepoResultsViewController: UISearchBarDelegate {

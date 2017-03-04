@@ -8,51 +8,44 @@
 
 import UIKit
 
-class SearchSettingsViewController: UIViewController, SettingsPresentingViewControllerDelegate {
+//SearchSettingsViewController is of type UIViewController (parent class)
+//also adheres to the SettingsPresentingViewContollerDelegate
+class SearchSettingsViewController: UIViewController {
 
+    //setting property
     var settings: GithubRepoSearchSettings?
     
+    //delegate
     weak var delegate: SettingsPresentingViewControllerDelegate?
 
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Initializing the settings to the GithubRepoSearchSettings()
+        //Calling init() within GithubRepoSearchSettings
         settings = GithubRepoSearchSettings()
-        settings?.minStars = 3
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+    //cancelButton action
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
+        //Using the delegate to call the didCancelSettings() within the RepoResultsViewController
         self.delegate?.didCancelSettings()
         
+        //dismissing the Settings modal
         dismiss(animated: true) {
-            print("Hello")
+            print("Settings modal dismissed")
         }
     }
     
+    //saveButton action
     @IBAction func saveButtonPressed(_ sender: Any) {
         
+        //Using the delegate to call the didSaveSettings() within the RepoResultsViewController
         self.delegate?.didSaveSettings(settings: settings!)
-        
     }
     
-    
-    internal func didCancelSettings() {
-        
-        
-    }
-    
-    internal func didSaveSettings(settings: GithubRepoSearchSettings) {
-        print("hello")
-    }
     
     // MARK: - Navigation
 
@@ -61,13 +54,17 @@ class SearchSettingsViewController: UIViewController, SettingsPresentingViewCont
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
  
 
 }
 
-protocol SettingsPresentingViewControllerDelegate: class {
-    func didSaveSettings(settings: GithubRepoSearchSettings)
-    func didCancelSettings()
-}
+
+
+
 
 
