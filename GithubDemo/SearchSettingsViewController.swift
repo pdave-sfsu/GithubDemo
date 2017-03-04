@@ -12,6 +12,8 @@ import UIKit
 //also adheres to the SettingsPresentingViewContollerDelegate
 class SearchSettingsViewController: UIViewController {
 
+    @IBOutlet weak var starsSlider: UISlider!
+    
     //setting property
     var settings: GithubRepoSearchSettings?
     
@@ -35,15 +37,25 @@ class SearchSettingsViewController: UIViewController {
         
         //dismissing the Settings modal
         dismiss(animated: true) {
-            print("Settings modal dismissed")
+            print("Settings modal dismissed: Cancel button pressed")
         }
     }
     
     //saveButton action
     @IBAction func saveButtonPressed(_ sender: Any) {
         
+        //Retrieve the value within the slider
+        //Cast it as an int (default is float)
+        //Set the minStars within settings to value
+        self.settings?.minStars = Int(self.starsSlider.value)
+        
         //Using the delegate to call the didSaveSettings() within the RepoResultsViewController
         self.delegate?.didSaveSettings(settings: settings!)
+        
+        //dismissing the Settings modal
+        dismiss(animated: true) { 
+            print("Settings modal dismissed: Save button pressed")
+        }
     }
     
     
@@ -59,12 +71,5 @@ class SearchSettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- 
 
 }
-
-
-
-
-
-
