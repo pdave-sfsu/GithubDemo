@@ -13,8 +13,6 @@ import MBProgressHUD
 //added in the SettingsPresentingViewControllerDelegate
 class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SettingsPresentingViewControllerDelegate {
     
-
-
     //tableView
     @IBOutlet weak var tableView: UITableView!
     
@@ -127,7 +125,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         self.searchSettings = settings
         
         //Making the network call
-        doSearch()
+        self.doSearch()
     }
     
     //Segue
